@@ -15,6 +15,12 @@ func (p point) length() float64 {
 		math.Pow(float64(p.y), 2) +
 		math.Pow(float64(p.z), 2)))
 }
+
+func (p *point) move(deltax, deltay, deltaz float32) {
+	p.x += deltax
+	p.y += deltay
+	p.z += deltaz
+}
 func newPoint(x, y, z float32) *point {
 	p := point{x: x, y: y, z: z}
 	return &p
@@ -22,5 +28,8 @@ func newPoint(x, y, z float32) *point {
 
 func main() {
 	pt4 := newPoint(7.8, 9.1, 2.3)
-	fmt.Println(pt4.length()) // 12.2040980698644
+	fmt.Println(pt4.length()) // 12.
+	
+	pt4.move(0.1, 0.1, 0.1)
+ 	fmt.Println(*pt4) // {7.9 9.200001 2.3999999}
 }
